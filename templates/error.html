@@ -65,5 +65,24 @@
         <div class="error-message">{{ error_message }}</div>
         <a href="/" class="back-button">← Back to Main Page</a>
     </div>
+    <div style="margin-top: 20px;">
+  <button id="btn-myname">Show my name (from API)</button>
+  <p id="myname-result" style="font-weight: bold; margin-top: 10px;"></p>
+</div>
+
+<script>
+document.getElementById("btn-myname").addEventListener("click", async () => {
+  const resultBox = document.getElementById("myname-result");
+  resultBox.textContent = "Loading...";
+  try {
+    const response = await fetch("/api/myname");
+    const data = await response.json();
+    resultBox.textContent = "My name: Abdul Latif";
+  } catch (err) {
+    resultBox.textContent = "Error: " + err.message;
+  }
+});
+</script>
+
 </body>
 </html>

@@ -87,6 +87,11 @@ def api_data():
         'server': socket.gethostname()
     }
     return jsonify(data)
+@app.route('/api/myname')
+def myname():
+    """Return student's name for identification"""
+    return jsonify({"name": "Abdul Latif"})
+
 
 @app.errorhandler(404)
 def not_found(error):
